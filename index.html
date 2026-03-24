@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stackwise — AI Tool Guides & Resources</title>
+<meta name="description" content="Stackwise helps you find the perfect AI tool for any business task. Browse our guides, comparisons and recommendations — then join the waitlist."/>
+<meta property="og:title" content="Stackwise — Find the Right AI Tool for Every Task"/>
+<meta property="og:description" content="Browse AI tool guides and comparisons. Find the perfect tool for your business task in seconds."/>
+<meta property="og:type" content="website"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ══ RESET ══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --teal:#1D9E75;--teal-dark:#0F6E56;--teal-mid:#7DCBAF;
+  --teal-light:#C8E8DC;--teal-pale:#EDF8F3;
+  --ink:#0A1512;--ink-mid:#3D5249;--ink-light:#7A9189;
+  --border:#DFF0E8;--border-strong:#C4DAD1;
+  --surface:#F7FAF8;--white:#fff;
+  --shadow:0 2px 12px rgba(10,21,18,0.07);
+  --shadow-teal:0 4px 20px rgba(29,158,117,0.12);
+  --font:'Plus Jakarta Sans',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* ══ NAV ══ */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:66px;
+  background:rgba(255,255,255,0.94);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow 0.3s;
+}
+nav.scrolled{box-shadow:var(--shadow);}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.logo-pills{display:flex;flex-direction:column;gap:3.5px;}
+.lp{height:5px;border-radius:3px;transition:transform 0.3s;}
+.lp1{width:22px;background:var(--teal-light);}
+.lp2{width:18px;background:var(--teal-mid);margin-left:2px;}
+.lp3{width:22px;background:var(--teal);}
+.nav-logo:hover .lp{transform:scaleX(0.88);}
+.logo-text{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-0.3px;}
+.logo-text span{color:var(--teal);font-weight:400;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-link{font-size:14px;color:var(--ink-mid);font-weight:500;transition:color 0.2s;}
+.nav-link:hover{color:var(--teal);}
+.nav-cta{
+  font-size:13px;font-weight:700;background:var(--teal);color:white;
+  padding:9px 20px;border-radius:10px;border:none;cursor:pointer;
+  transition:background 0.2s,transform 0.15s;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--teal-dark);transform:translateY(-1px);}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;overflow:hidden;
+  padding:90px 2rem 80px;text-align:center;
+  background:linear-gradient(180deg,var(--teal-pale) 0%,var(--white) 100%);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,#1D9E7510 1px,transparent 1px);
+  background-size:28px 28px;z-index:0;
+}
+.hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;border:1px solid var(--teal-light);
+  color:var(--teal-dark);font-size:13px;font-weight:600;
+  padding:7px 18px;border-radius:30px;margin-bottom:24px;
+  box-shadow:var(--shadow-teal);
+  animation:fadeUp 0.5s ease both;
+}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:blink 1.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{
+  font-size:clamp(32px,5vw,58px);font-weight:800;line-height:1.1;
+  letter-spacing:-1.5px;color:var(--ink);margin-bottom:18px;
+  animation:fadeUp 0.5s 0.1s ease both;
+}
+.hero h1 em{font-family:'Lora',serif;font-style:italic;font-weight:400;color:var(--teal);letter-spacing:-0.5px;}
+.hero-sub{
+  font-size:17px;color:var(--ink-mid);line-height:1.75;
+  max-width:480px;margin:0 auto 32px;
+  animation:fadeUp 0.5s 0.2s ease both;
+}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.5s 0.3s ease both;}
+.btn-primary{
+  font-size:15px;font-weight:700;background:var(--teal);color:white;
+  padding:13px 28px;border-radius:12px;border:none;cursor:pointer;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,0.28);}
+.btn-secondary{
+  font-size:15px;font-weight:600;background:white;color:var(--ink-mid);
+  padding:13px 28px;border-radius:12px;border:1.5px solid var(--border-strong);
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-secondary:hover{border-color:var(--teal);color:var(--teal);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+
+/* ══ STATS STRIP ══ */
+.stats{
+  display:flex;justify-content:center;gap:48px;
+  padding:28px 2rem;border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--white);flex-wrap:wrap;
+}
+.stat-item{text-align:center;}
+.stat-num{font-size:26px;font-weight:800;color:var(--teal);letter-spacing:-0.5px;}
+.stat-label{font-size:12px;color:var(--ink-light);margin-top:2px;}
+
+/* ══ SEARCH BAR ══ */
+.search-section{padding:48px 2rem 20px;max-width:860px;margin:0 auto;}
+.search-label{font-size:13px;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;}
+.search-wrap{position:relative;}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
+#search-input{
+  width:100%;padding:14px 18px 14px 44px;
+  border:1.5px solid var(--border-strong);border-radius:12px;
+  font-size:15px;font-family:var(--font);color:var(--ink);
+  background:var(--surface);outline:none;
+  transition:border-color 0.2s,box-shadow 0.2s;
+}
+#search-input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(29,158,117,0.1);background:white;}
+#search-input::placeholder{color:var(--ink-light);}
+
+/* ══ FILTER TABS ══ */
+.filters{
+  display:flex;gap:8px;flex-wrap:wrap;
+  padding:16px 2rem 0;max-width:860px;margin:0 auto;
+}
+.filter-btn{
+  font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;
+  border:1.5px solid var(--border);background:white;color:var(--ink-mid);
+  cursor:pointer;transition:all 0.15s;white-space:nowrap;
+  font-family:var(--font);
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--teal-pale);border-color:var(--teal-light);color:var(--teal-dark);
+}
+
+/* ══ ARTICLES GRID ══ */
+.articles-section{padding:24px 2rem 60px;max-width:860px;margin:0 auto;}
+.section-heading{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;flex-wrap:wrap;gap:10px;
+}
+.section-heading h2{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-0.3px;}
+.article-count{font-size:13px;color:var(--ink-light);}
+
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+
+.article-card{
+  background:white;border:1.5px solid var(--border);border-radius:16px;
+  padding:20px;cursor:pointer;
+  transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s;
+  display:flex;flex-direction:column;
+}
+.article-card:hover{border-color:var(--teal-mid);box-shadow:var(--shadow-teal);transform:translateY(-2px);}
+.article-card.featured{border-color:var(--teal);grid-column:span 2;flex-direction:row;gap:20px;align-items:flex-start;}
+.card-category{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;
+  color:var(--teal-dark);background:var(--teal-pale);border:1px solid var(--teal-light);
+  padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:12px;
+}
+.card-title{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:8px;letter-spacing:-0.2px;}
+.article-card.featured .card-title{font-size:18px;}
+.card-desc{font-size:13px;color:var(--ink-mid);line-height:1.65;flex:1;}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--border);
+}
+.card-read{font-size:12px;color:var(--ink-light);}
+.card-arrow{
+  font-size:13px;font-weight:700;color:var(--teal);
+  background:var(--teal-pale);border:1px solid var(--teal-light);
+  padding:4px 10px;border-radius:8px;
+  transition:background 0.15s;
+}
+.article-card:hover .card-arrow{background:var(--teal);color:white;border-color:var(--teal);}
+.card-tag{font-size:11px;color:var(--ink-light);background:var(--surface);padding:2px 8px;border-radius:6px;}
+
+/* no results */
+.no-results{text-align:center;padding:48px 24px;color:var(--ink-light);}
+.no-results p{font-size:15px;margin-top:8px;}
+
+/* ══ WAITLIST BANNER ══ */
+.waitlist-banner{
+  background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+  margin:0 2rem 60px;border-radius:20px;padding:48px 40px;
+  text-align:center;max-width:820px;margin-left:auto;margin-right:auto;
+  position:relative;overflow:hidden;
+}
+.waitlist-banner::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.wl-inner{position:relative;z-index:1;}
+.wl-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);
+  color:white;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:18px;
+}
+.waitlist-banner h2{font-size:clamp(22px,3.5vw,34px);font-weight:800;color:white;letter-spacing:-0.8px;margin-bottom:10px;line-height:1.2;}
+.waitlist-banner p{font-size:15px;color:rgba(255,255,255,0.82);line-height:1.7;max-width:440px;margin:0 auto 26px;}
+.wl-form{display:flex;gap:10px;max-width:420px;margin:0 auto;}
+.wl-input{
+  flex:1;padding:13px 18px;border-radius:11px;
+  border:1.5px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.12);color:white;
+  font-size:14px;font-family:var(--font);outline:none;
+  transition:border-color 0.2s,background 0.2s;
+}
+.wl-input:focus{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.18);}
+.wl-input::placeholder{color:rgba(255,255,255,0.55);}
+.wl-btn{
+  padding:13px 22px;border-radius:11px;border:none;
+  background:white;color:var(--teal-dark);font-size:14px;font-weight:700;
+  cursor:pointer;white-space:nowrap;font-family:var(--font);
+  transition:opacity 0.2s,transform 0.15s;
+}
+.wl-btn:hover{opacity:0.9;transform:translateY(-1px);}
+.wl-note{font-size:12px;color:rgba(255,255,255,0.45);margin-top:12px;}
+.wl-success{
+  display:none;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+  border-radius:12px;padding:14px 20px;color:white;font-size:14px;font-weight:600;
+  max-width:400px;margin:0 auto;
+}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--ink);color:rgba(255,255,255,0.45);
+  padding:36px 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.35);transition:color 0.2s;}
+.footer-links a:hover{color:white;}
+.footer-copy{font-size:12px;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:700px){
+  nav{padding:0 1rem;}
+  .nav-links{display:none;}
+  .hero{padding:70px 1rem 60px;}
+  .stats{gap:24px;}
+  .articles-grid{grid-template-columns:1fr;}
+  .article-card.featured{grid-column:span 1;flex-direction:column;}
+  .wl-form{flex-direction:column;}
+  .waitlist-banner{margin:0 1rem 40px;padding:32px 20px;}
+  footer{flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+  .search-section,.filters,.articles-section{padding-left:1rem;padding-right:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="main-nav">
+  <a href="/" class="nav-logo">
+    <div class="logo-pills">
+      <div class="lp lp1"></div>
+      <div class="lp lp2"></div>
+      <div class="lp lp3"></div>
+    </div>
+    <div class="logo-text">stack<span>wise</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#guides" class="nav-link">AI Guides</a>
+    <a href="#guides" class="nav-link">Categories</a>
+    <a href="https://stackwise-waitlist.netlify.app/" target="_blank" class="nav-link">About</a>
+  </div>
+  <a href="https://stackwise-waitlist.netlify.app/" target="_blank" class="nav-cta">Join Waitlist →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Free AI Tool Guides — Updated Weekly
+    </div>
+    <h1>Find the <em>right AI tool</em><br/>for every business task</h1>
+    <p class="hero-sub">We research, test, and rank the best AI tools for specific business tasks — so you don't have to spend hours figuring it out yourself.</p>
+    <div class="hero-actions">
+      <a href="#guides" class="btn-primary">Browse All Guides →</a>
+      <a href="https://stackwise-waitlist.netlify.app/" target="_blank" class="btn-secondary">Join the Waitlist</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats">
+  <div class="stat-item"><p class="stat-num" id="guide-count">12</p><p class="stat-label">Task Guides</p></div>
+  <div class="stat-item"><p class="stat-num">50+</p><p class="stat-label">AI Tools Reviewed</p></div>
+  <div class="stat-item"><p class="stat-num">847</p><p class="stat-label">Waitlist Members</p></div>
+  <div class="stat-item"><p class="stat-num">2026</p><p class="stat-label">Verified & Current</p></div>
+</div>
+
+<!-- ══ SEARCH ══ -->
+<div class="search-section" id="guides">
+  <p class="search-label">Search Guides</p>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input id="search-input" type="text" placeholder="e.g. cold email, customer support, content writing…"/>
+  </div>
+</div>
+
+<!-- ══ FILTERS ══ -->
+<div class="filters">
+  <button class="filter-btn active" data-cat="all">All Guides</button>
+  <button class="filter-btn" data-cat="writing">✍️ Writing</button>
+  <button class="filter-btn" data-cat="sales">💼 Sales</button>
+  <button class="filter-btn" data-cat="data">📊 Data</button>
+  <button class="filter-btn" data-cat="content">📱 Content</button>
+  <button class="filter-btn" data-cat="productivity">⚡ Productivity</button>
+  <button class="filter-btn" data-cat="research">🔬 Research</button>
+</div>
+
+<!-- ══ ARTICLES ══ -->
+<div class="articles-section">
+  <div class="section-heading">
+    <h2>AI Tool Guides</h2>
+    <span class="article-count" id="result-count"></span>
+  </div>
+  <div class="articles-grid" id="articles-grid">
+    <!-- Cards injected by JS -->
+  </div>
+  <div class="no-results" id="no-results" style="display:none;">
+    <span style="font-size:36px;">🔍</span>
+    <p>No guides found for that search. <a href="#" onclick="clearSearch()" style="color:var(--teal);">Clear search</a></p>
+  </div>
+</div>
+
+<!-- ══ WAITLIST BANNER ══ -->
+<div class="waitlist-banner">
+  <div class="wl-inner">
+    <div class="wl-badge">🚀 Launching in 90 days</div>
+    <h2>Want us to find the perfect AI tool for your specific task?</h2>
+    <p>Stackwise is an AI-powered matchmaker — describe your task and it recommends the exact right tool, with a step-by-step guide. Early members get 3 months free.</p>
+    <div class="wl-form" id="wl-form">
+      <input class="wl-input" type="email" id="wl-email" placeholder="your@business.com" autocomplete="email"/>
+      <button class="wl-btn" onclick="joinWaitlist()">Join Free →</button>
+    </div>
+    <div class="wl-success" id="wl-success">🎉 You're on the list! We'll notify you on launch day.</div>
+    <p class="wl-note">No credit card · No spam · Unsubscribe any time</p>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-pills">
+      <div class="lp lp1" style="background:rgba(255,255,255,0.2);"></div>
+      <div class="lp lp2" style="background:rgba(255,255,255,0.35);margin-left:2px;"></div>
+      <div class="lp lp3" style="background:#2DCE97;"></div>
+    </div>
+    <div class="logo-text" style="color:white;">stack<span style="color:#2DCE97;">wise</span></div>
+  </div>
+  <div class="footer-links">
+    <a href="https://stackwise-waitlist.netlify.app/" target="_blank">Waitlist</a>
+    <a href="#guides">Guides</a>
+    <a href="mailto:hello@stackwise.app">Contact</a>
+    <a href="#">Privacy</a>
+  </div>
+  <p class="footer-copy">© 2026 Stackwise · All rights reserved</p>
+</footer>
+
+<script>
+// ══════════════════════════════════════════
+//  ARTICLE DATABASE
+//  To add a new SEO page:
+//  1. Download it from the SEO Generator
+//  2. Put the HTML file in the same folder as this file
+//  3. Add one object below following the same format
+// ══════════════════════════════════════════
+const ARTICLES = [
+  {
+    title: "Best AI Tool for Writing Cold Emails in 2026 — Tested & Ranked",
+    desc: "We tested 12 AI tools for cold email writing. Here are the top 3 ranked by quality, personalisation, and price — with a clear winner.",
+    category: "sales",
+    categoryLabel: "Sales",
+    slug: "best-ai-tool-for-cold-email-writing",
+    readTime: "6 min",
+    featured: true,
+    tags: ["Cold Email","Outreach","Sales AI"],
+  },
+  {
+    title: "Best AI Tool for Automating Customer Support in 2026",
+    desc: "Stop answering the same questions manually. These AI tools handle customer queries 24/7 so you don't have to.",
+    category: "productivity",
+    categoryLabel: "Productivity",
+    slug: "best-ai-tool-for-customer-support",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Support","Automation","Chatbot"],
+  },
+  {
+    title: "Best AI Tool for Generating Product Descriptions in 2026",
+    desc: "Write hundreds of product descriptions in minutes. The right AI tool pays for itself with the first product launch.",
+    category: "writing",
+    categoryLabel: "Writing",
+    slug: "best-ai-tool-for-product-descriptions",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Ecommerce","Copywriting","Product"],
+  },
+  {
+    title: "Best AI Tool for Summarising Research Papers in 2026",
+    desc: "Cut through 40-page papers in 2 minutes. These tools extract the key findings without losing important detail.",
+    category: "research",
+    categoryLabel: "Research",
+    slug: "best-ai-tool-for-summarising-research",
+    readTime: "4 min",
+    featured: false,
+    tags: ["Research","Summarisation","Academic"],
+  },
+  {
+    title: "Best AI Tool for Social Media Content in 2026",
+    desc: "Create a month of social content in one afternoon. We ranked the top tools by output quality and scheduling features.",
+    category: "content",
+    categoryLabel: "Content",
+    slug: "best-ai-tool-for-social-media-content",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Social Media","Content","Marketing"],
+  },
+  {
+    title: "Best AI Tool for Analysing Spreadsheet Data in 2026",
+    desc: "No Excel expertise needed. These AI tools turn raw spreadsheet data into clear insights and charts automatically.",
+    category: "data",
+    categoryLabel: "Data",
+    slug: "best-ai-tool-for-spreadsheet-analysis",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Spreadsheet","Data","Analysis"],
+  },
+  {
+    title: "Best AI Tool for Writing SEO Blog Posts in 2026",
+    desc: "Write posts that actually rank. These tools handle keyword optimisation, structure, and readability in one pass.",
+    category: "writing",
+    categoryLabel: "Writing",
+    slug: "best-ai-tool-for-seo-blog-posts",
+    readTime: "6 min",
+    featured: false,
+    tags: ["SEO","Blogging","Content"],
+  },
+  {
+    title: "Best AI Tool for Transcribing Meetings in 2026",
+    desc: "Never take manual notes again. These tools transcribe, summarise, and action-item your meetings automatically.",
+    category: "productivity",
+    categoryLabel: "Productivity",
+    slug: "best-ai-tool-for-transcribing-meetings",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Meetings","Transcription","Productivity"],
+  },
+  {
+    title: "Best AI Tool for Invoice & Data Entry Automation in 2026",
+    desc: "Stop typing data manually. These AI tools extract, validate, and enter invoice data into your systems automatically.",
+    category: "data",
+    categoryLabel: "Data",
+    slug: "best-ai-tool-for-invoice-automation",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Invoicing","Data Entry","Automation"],
+  },
+  {
+    title: "Best AI Tool for Sales Research & Lead Finding in 2026",
+    desc: "Build targeted prospect lists in hours, not weeks. We ranked the top AI tools for finding and enriching leads.",
+    category: "sales",
+    categoryLabel: "Sales",
+    slug: "best-ai-tool-for-sales-research",
+    readTime: "6 min",
+    featured: false,
+    tags: ["Lead Gen","Sales","Prospecting"],
+  },
+  {
+    title: "Best AI Tool for Creating Training Materials in 2026",
+    desc: "Turn your expertise into structured training content. These tools build courses, quizzes, and guides from your notes.",
+    category: "content",
+    categoryLabel: "Content",
+    slug: "best-ai-tool-for-training-materials",
+    readTime: "5 min",
+    featured: false,
+    tags: ["Training","HR","Learning"],
+  },
+  {
+    title: "Best AI Tool for Proofreading Business Documents in 2026",
+    desc: "Send flawless documents every time. These AI proofreaders catch grammar, tone, clarity, and brand consistency issues.",
+    category: "writing",
+    categoryLabel: "Writing",
+    slug: "best-ai-tool-for-proofreading",
+    readTime: "4 min",
+    featured: false,
+    tags: ["Proofreading","Editing","Writing"],
+  },
+];
+
+// ══ Render ══
+let currentCat = "all";
+let currentSearch = "";
+
+function renderCards() {
+  const grid = document.getElementById("articles-grid");
+  const noResults = document.getElementById("no-results");
+  const countEl = document.getElementById("result-count");
+
+  const filtered = ARTICLES.filter(a => {
+    const matchCat = currentCat === "all" || a.category === currentCat;
+    const q = currentSearch.toLowerCase();
+    const matchSearch = !q || a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.tags.some(t => t.toLowerCase().includes(q));
+    return matchCat && matchSearch;
+  });
+
+  countEl.textContent = filtered.length === ARTICLES.length ? `${ARTICLES.length} guides` : `${filtered.length} of ${ARTICLES.length} guides`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    noResults.style.display = "block";
+    return;
+  }
+  noResults.style.display = "none";
+
+  grid.innerHTML = filtered.map(a => `
+    <a href="${a.slug}.html" class="article-card${a.featured ? " featured" : ""}">
+      <div>
+        <span class="card-category">${a.categoryLabel}</span>
+        <h3 class="card-title">${a.title}</h3>
+        <p class="card-desc">${a.desc}</p>
+      </div>
+      <div class="card-footer">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          ${a.tags.slice(0,2).map(t => `<span class="card-tag">${t}</span>`).join("")}
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span class="card-read">${a.readTime} read</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+  `).join("");
+
+  document.getElementById("guide-count").textContent = ARTICLES.length;
+}
+
+// ══ Filters ══
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentCat = btn.dataset.cat;
+    renderCards();
+  });
+});
+
+// ══ Search ══
+document.getElementById("search-input").addEventListener("input", e => {
+  currentSearch = e.target.value;
+  renderCards();
+});
+
+function clearSearch() {
+  document.getElementById("search-input").value = "";
+  currentSearch = "";
+  renderCards();
+}
+
+// ══ Nav scroll ══
+window.addEventListener("scroll", () => {
+  document.getElementById("main-nav").classList.toggle("scrolled", window.scrollY > 10);
+}, { passive: true });
+
+// ══ Waitlist ══
+function joinWaitlist() {
+  const email = document.getElementById("wl-email").value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    const input = document.getElementById("wl-email");
+    input.style.borderColor = "rgba(255,100,100,0.7)";
+    setTimeout(() => input.style.borderColor = "", 2000);
+    return;
+  }
+  document.getElementById("wl-form").style.display = "none";
+  document.getElementById("wl-success").style.display = "block";
+  // Redirect to waitlist page after short delay
+  setTimeout(() => window.open("https://stackwise-waitlist.netlify.app/", "_blank"), 1200);
+}
+
+document.getElementById("wl-email").addEventListener("keydown", e => {
+  if (e.key === "Enter") joinWaitlist();
+});
+
+// ══ Init ══
+renderCards();
+</script>
+
+</body>
+</html>
